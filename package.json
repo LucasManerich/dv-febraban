@@ -1,9 +1,21 @@
 {
   "name": "dv-febraban",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Algoritmo para cálculo do dígito verificador de boletos no padrão febraban",
   "main": "index.js",
   "author": "Lucas Manerich",
+  "homepage": "https://github.com/LucasManerich/dv-febraban",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LucasManerich/dv-febraban"
+  },
+  "keywords": [
+    "febraban",
+    "boleto",
+    "dv",
+    "dígito verificador",
+    "linha digitável"
+  ],
   "license": "MIT",
   "private": false,
   "dependencies": {
