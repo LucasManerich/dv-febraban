@@ -4,20 +4,23 @@ const padStart = require('pad-start');
  * Calcula os fatores do dígito verificador
  * @param {String} barcode 
  */
-const calculaFatoresDv = (barcode) => {
+const calculaFatoresDv = (barcode, geracaoDvGeral = true) => {
   let indice = barcode.length - 1;
   let fator = 1
   let totalDv = 0;
   while(!(indice < 0)){
-    if(indice != 4){
-      if(fator == 1){
-        fator = 2 ;
-      } else {
-        fator = 1 ;
-      }
-      let result = padStart((barcode[indice] * fator).toString(), 2, 0);
-      totalDv += Number(result[0]) + Number(result[1]);
+    if(geracaoDvGeral && indice == 4) {
+      indice--;
+      break;
     }
+    
+    if(fator == 1){
+      fator = 2 ;
+    } else {
+      fator = 1 ;
+    }
+    let result = padStart((barcode[indice] * fator).toString(), 2, 0);
+    totalDv += Number(result[0]) + Number(result[1]);
     indice--;
   }
   
@@ -49,8 +52,8 @@ const replaceDigito = (barcode, chr) => {
  * Retorna o dígito verificador do boleto no padrão febraban
  * @param {String} barcode - Código de barras com 44 caracteres com a quarta posição (dígito) substituído por zero
  */
-exports.getDigitoVerificador = (barcode) => {
-  return calculaFatoresDv(barcode);
+getDigitoVerificadorGeral = (barcode) => {
+  return calculaFatoresDv(barcode, true);
 }
 
 /**
@@ -58,6 +61,19 @@ exports.getDigitoVerificador = (barcode) => {
  * @param {String} barcode - Código de barras com 44 caracteres com a quarta posição (dígito) substituído por zero
  */
 exports.getCodigoBarrasDv = (barcode) => {
-  const digito = calculaFatoresDv(barcode);
+  const digito = calculaFatoresDv(barcode, true);
   return replaceDigito(barcode, digito);
+}
+
+/**
+ * Retorna a linha digitável de um código de barras
+ * @param {String} barcode - Código de barras
+ */
+exports.getLinhaDigitavel = (barcode) => {
+  const barcodeParts = [];
+  barcodeParts.push(barcode.substring(0, 11));
+  barcodeParts.push(barcode.substring(11, 22));
+  barcodeParts.push(barcode.substring(22, 33));
+  barcodeParts.push(barcode.substring(33, 44));
+  return barcodeParts.map(x => `${x} ${calculaFatoresDv(x, false)}`).join(' ');
 }
