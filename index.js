@@ -52,7 +52,7 @@ const replaceDigito = (barcode, chr) => {
  * Retorna o dígito verificador do boleto no padrão febraban
  * @param {String} barcode - Código de barras com 44 caracteres com a quarta posição (dígito) substituído por zero
  */
-getDigitoVerificadorGeral = (barcode) => {
+exports.getDigitoVerificadorGeral = (barcode) => {
   return calculaFatoresDv(barcode, true);
 }
 
