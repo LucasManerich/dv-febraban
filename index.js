@@ -11,7 +11,7 @@ const calculaFatoresDv = (barcode, geracaoDvGeral = true) => {
   while(!(indice < 0)){
     if(geracaoDvGeral && indice == 4) {
       indice--;
-      break;
+      continue;
     }
     
     if(fator == 1){
