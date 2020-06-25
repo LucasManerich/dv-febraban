@@ -1,6 +1,6 @@
 {
   "name": "dv-febraban",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Algoritmo para cálculo do dígito verificador de boletos no padrão febraban",
   "main": "index.js",
   "author": "Lucas Manerich",
