@@ -8,7 +8,7 @@
 ## Utilização:
 
 ```javascript
-import { getCodigoBarrasDv, getDigitoVerificador, getLinhaDigitavel } from 'dv-febraban'
+import { getCodigoBarrasDv, getDigitoVerificadorGeral, getLinhaDigitavel } from 'dv-febraban'
 
 getCodigoBarrasDv('80600000003077412922019112820190000000000001'); 
 // retorna: 8069000003077412922019112820190000000000001
