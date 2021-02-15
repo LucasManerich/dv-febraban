@@ -1,7 +1,11 @@
 # Dv Febraban
  Algoritmo para cálculo do dígito verificador de boletos no padrão Febraban
+ 
+## Instalação
 
-### Utilização:
+```npm install dv-febraban --save```
+
+## Utilização:
 
 ```javascript
 import { getCodigoBarrasDv, getDigitoVerificador, getLinhaDigitavel } from 'dv-febraban'
